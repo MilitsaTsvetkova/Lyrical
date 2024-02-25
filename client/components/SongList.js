@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
 import { Link } from 'react-router'
-import fetchSongs from '../queries/fetchSongs'
+import fetchSongsList from '../queries/fetchSongsList'
 import gql from 'graphql-tag'
 
 class SongList extends Component {
@@ -44,4 +44,4 @@ const mutation = gql`
   }
 `
 
-export default graphql(mutation)(graphql(fetchSongs)(SongList))
+export default graphql(mutation)(graphql(fetchSongsList)(SongList))
