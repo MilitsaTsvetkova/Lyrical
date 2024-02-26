@@ -6,15 +6,15 @@ class LyricCreate extends Component {
     super(props)
     this.state = { content: '' }
   }
-  onSubmit(event){
+  onSubmit(event) {
     event.preventDefault()
     this.props.mutate({
-        variables:{
-            content: this.state.content,
-            songId: this.props.songId
-        }
+      variables: {
+        content: this.state.content,
+        songId: this.props.songId,
+      },
     })
-    this.setState({content: ''})
+    this.setState({ content: '' })
   }
   render() {
     return (
@@ -30,14 +30,16 @@ class LyricCreate extends Component {
 }
 
 const mutation = gql`
-mutation AddLyricToSong($content: String, $songId: ID) {
+  mutation AddLyricToSong($content: String, $songId: ID) {
     addLyricToSong(content: $content, songId: $songId) {
       id
       lyrics {
         id
         content
+        likes
       }
     }
-  }`
+  }
+`
 
 export default graphql(mutation)(LyricCreate)
